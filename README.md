@@ -1,64 +1,38 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# Ukrainian Web Scrapper by Scrappy Devs
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+- [Rafel Diaz](https://www.linkedin.com/in/rafael-diaz-26368053/)
+- [Cristian Fernandez](https://www.linkedin.com/in/cristian-fernandez-dev/)
+- [Jeffrey Chee](https://www.linkedin.com/in/jeffrey-chee)
+- [Nikolai Quintos](https://www.linkedin.com/in/nikolaiq/)
+- [Ricardo Di Zio](https://www.linkedin.com/in/ricardo-di-zio-ab863ab9/)
 
-## About Laravel
+## About the Ukrainian Web Scrapper 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Web Scraper that focuses on Ukrainian Data. Fixing open communications by providing data to others. Ukrainians and general population that are interested in more information can benefit from this application.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+## Project Repo
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+Repository can be cloned by following the issuing the code below:
+`git clone git@github.com:Fall-In-2022/Scrapper.git`
 
-## Learning Laravel
+## Running Locally w/ LaraDock
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+LaraDock guide located here - [https://laradock.io/](https://laradock.io/).
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Windows Requirements:
+- [Install Hyper-V on Windows 10](https://docs.microsoft.com/en-us/virtualization/hyper-v-on-windows/quick-start/enable-hyper-v)
+- [Install WSL](https://docs.microsoft.com/en-us/windows/wsl/install)
 
-## Laravel Sponsors
+How to run this repo locally:
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+1. Clone both Ukrainian Web Scrapper and LaraDock into the same folder.
+2. Open laradock repo with your code editor and:
+  - Open `docker-compose.yml`, update to `- "${NGINX_HOST_HTTP_PORT}:8084"`
+  - Open `../nginx/sites/default.conf` delete every code and paste the code from `laravel.conf.example` file.
+  - In `default.conf` update all 80 port to 8084, make sure `root /var/www/public;` is set, and `server_name localhost;`.
+  - Create new `.env` file in the root directory that's copied from `.env.example`.
+  - In the environment file, point `APP_CODE_PATH_HOST=../Scrapper/`, `APP_CODE_PATH_CONTAINER=/var/www/public`, for Windows machine, `COMPOSE_PATH_SEPARATOR=;`, and lastly `PHP_VERSION=8.0`.
+3. Open Scrapper repo, and add a `.env` file as well with content copied from `.env.example` file.
+4. Make sure LaraDock is up and running.
+5. Open console/terminal, and cd to the laradock folder and issue: `docker-compose up -d nginx php-fpm mysql`.
 
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
