@@ -27,11 +27,11 @@ How to run this repo locally:
 
 1. Clone both Ukrainian Web Scrapper and LaraDock into the same folder.
 2. Open laradock repo with your code editor and:
-- Open `docker-compose.yml`, update to `- "${NGINX_HOST_HTTP_PORT}:8084"`
-- Open `../nginx/sites/default.conf` delete every code and paste the code from `laravel.conf.example` file.
-- In `default.conf` update all 80 port to 8084, make sure `root /var/www/public;` is set, and `server_name localhost;`.
-- Create new `.env` file in the root directory that's copied from `.env.example`.
-- In the environment file, point `APP_CODE_PATH_HOST=../Scrapper/`, `APP_CODE_PATH_CONTAINER=/var/www/public`, for Windows machine, `COMPOSE_PATH_SEPARATOR=;`, and lastly `PHP_VERSION=8.0`.
+   - Open `docker-compose.yml`, update to `   - "${NGINX_HOST_HTTP_PORT}:8084"`
+   - Open `../nginx/sites/default.conf` delete every code and paste the code from `laravel.conf.example` file.
+   - In `default.conf` update all 80 port to 8084, make sure `root /var/www/public;` is set, and `server_name localhost;`.
+   - Create new `.env` file in the root directory that's copied from `.env.example`.
+   - In the environment file, point `APP_CODE_PATH_HOST=../Scrapper/`, `APP_CODE_PATH_CONTAINER=/var/www/public`, for Windows machine, `COMPOSE_PATH_SEPARATOR=;`, and lastly `PHP_VERSION=8.0`.
 3. Open Scrapper repo, and add a `.env` file as well with content copied from `.env.example` file.
 4. Make sure LaraDock is up and running.
 5. Open console/terminal, and cd to the laradock folder and issue: `docker-compose up -d nginx php-fpm mysql`.
