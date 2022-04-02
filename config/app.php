@@ -177,6 +177,10 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        //Custom
+        Atymic\Twitter\ServiceProvider\LaravelServiceProvider::class,
+
+
     ],
 
     /*
@@ -192,6 +196,7 @@ return [
 
     'aliases' => Facade::defaultAliases()->merge([
         // 'ExampleClass' => App\Example\ExampleClass::class,
+        'Twitter'   => Atymic\Twitter\Facade\Twitter::class
     ])->toArray(),
 
 ];

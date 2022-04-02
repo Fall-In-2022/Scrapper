@@ -1,0 +1,99 @@
+{
+
+    "name": "Ukraine",
+    "placeType": {
+        "code": 12,
+        "name": "Country"
+    },
+    "url": "http://where.yahooapis.com/v1/place/23424976",
+    "parentid": 1,
+    "country": "Ukraine",
+    "woeid": 23424976,
+    "countryCode": "UA",
+    "places": [
+        {
+            "name": "Dnipropetrovsk",
+            "placeType": {
+              "code": 7,
+              "name": "Town"
+            },
+            "url": "http://where.yahooapis.com/v1/place/918981",
+            "parentid": 23424976,
+            "country": "Ukraine",
+            "woeid": 918981,
+            "countryCode": "UA"
+          },
+          {
+            "name": "Donetsk",
+            "placeType": {
+              "code": 7,
+              "name": "Town"
+            },
+            "url": "http://where.yahooapis.com/v1/place/919163",
+            "parentid": 23424976,
+            "country": "Ukraine",
+            "woeid": 919163,
+            "countryCode": "UA"
+          },
+          {
+            "name": "Kharkiv",
+            "placeType": {
+              "code": 7,
+              "name": "Town"
+            },
+            "url": "http://where.yahooapis.com/v1/place/922137",
+            "parentid": 23424976,
+            "country": "Ukraine",
+            "woeid": 922137,
+            "countryCode": "UA"
+          },
+          {
+            "name": "Kyiv",
+            "placeType": {
+              "code": 7,
+              "name": "Town"
+            },
+            "url": "http://where.yahooapis.com/v1/place/924938",
+            "parentid": 23424976,
+            "country": "Ukraine",
+            "woeid": 924938,
+            "countryCode": "UA"
+          },
+          {
+            "name": "Lviv",
+            "placeType": {
+              "code": 7,
+              "name": "Town"
+            },
+            "url": "http://where.yahooapis.com/v1/place/924943",
+            "parentid": 23424976,
+            "country": "Ukraine",
+            "woeid": 924943,
+            "countryCode": "UA"
+          },
+          {
+            "name": "Odesa",
+            "placeType": {
+              "code": 7,
+              "name": "Town"
+            },
+            "url": "http://where.yahooapis.com/v1/place/929398",
+            "parentid": 23424976,
+            "country": "Ukraine",
+            "woeid": 929398,
+            "countryCode": "UA"
+          },
+          {
+            "name": "Zaporozhye",
+            "placeType": {
+              "code": 7,
+              "name": "Town"
+            },
+            "url": "http://where.yahooapis.com/v1/place/939628",
+            "parentid": 23424976,
+            "country": "Ukraine",
+            "woeid": 939628,
+            "countryCode": "UA"
+          }
+    ]
+}
