@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UkraineCityController;
 use  App\Http\Controllers\UkraineWebScraperController;
+use App\Http\Controllers\RedditController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,4 +40,9 @@ Route::group(['prefix' => 'twitter'], function () {
 //FACEBOOK APIS
 
 //REDDIT APIS
+Route::group(['prefix' => 'reddit'], function () {
+
+    Route::get('/getReddit', [RedditController::class, 'index']);
+
+});
 
