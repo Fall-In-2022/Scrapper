@@ -1,8 +1,9 @@
 <?php
 
 
-use Illuminate\Support\Facades\DB;
+namespace App\Helpers;
 
+use Illuminate\Support\Facades\DB;
 
 /**
  * Location Helper Class
