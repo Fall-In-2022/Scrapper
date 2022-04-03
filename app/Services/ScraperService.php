@@ -7,6 +7,7 @@ use Symfony\Component\HttpClient\HttpClient;
 use App\Models\UkraineCity;
 use Illuminate\Support\Str;
 use App\Helpers\LocationHelper;
+use Atymic\Twitter\Facade\Twitter;
 
 class ScraperService
 {
@@ -74,7 +75,7 @@ class ScraperService
         $titles = $crawler->filter('.restList article section h2')->each(function ($node) {
             return $node->text();
         });
-        
+
         // link to view a specific article details
         $links = $crawler->filter('.restList article section h2 a')->each(function($node){
             return 'https://www.ukrinform.net' . $node->attr('href');
@@ -169,5 +170,33 @@ class ScraperService
         }
 
         return $scraped_data;
+    }
+
+    public function twitter($latitude, $longitude)
+    {
+
+        $output = [];
+
+        $cities = LocationHelper::getNearestCity($latitude, $longitude);
+
+        //Next we do a call to the twitter api trying to find information about that city
+        $twitter = Twitter::forApiV1();
+
+        foreach($cities as $city) {
+
+            $responseTwitter = $twitter->getSearch([
+                "q"=> $city->city_name
+            ]);
+
+            $data = [
+                "city_info" => $city,
+                "tweets" => $responseTwitter
+            ];
+
+            array_push($$output, $data);
+        }
+
+
+        return $output;
     }
 }
