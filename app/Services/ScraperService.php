@@ -193,7 +193,7 @@ class ScraperService
                 "tweets" => $responseTwitter
             ];
 
-            array_push($$output, $data);
+            array_push($output, $data);
         }
 
 

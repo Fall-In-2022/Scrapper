@@ -23,8 +23,6 @@ class UkraineWebScraperController extends Controller
             ]);
         }
 
-        $latitude  = $request->get("latitude");
-
         $latitude  = $request->input('lat');
         $longitude = $request->input('long');
 
