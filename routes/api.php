@@ -4,6 +4,7 @@ use App\Http\Controllers\TwitterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UkraineCityController;
+use  App\Http\Controllers\UkraineWebScraperController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('ukraineCities', UkraineCityController::class);
+
+Route::get('/ukraineWebScraper', [UkraineWebScraperController::class, 'index']);
 
 //TWITTER APIS
 Route::group(['prefix' => 'twitter'], function () {

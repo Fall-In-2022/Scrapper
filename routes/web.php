@@ -16,10 +16,3 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/test', function () {
-    $path = public_path('ukraine_cities.json');
-    $data = json_decode(file_get_contents($path), true); 
-    dump($data[0]['city']);
-    return "<h1>This is a test page.</h1>";
-});
