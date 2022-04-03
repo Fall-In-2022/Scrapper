@@ -29,9 +29,9 @@ class UkraineWebScraperController extends Controller
         $kyiv_inde_data = $scraperService->scrapKyivIndependent($latitude, $longitude);
         $ukrinform_data = $scraperService->scrapUkrinform($latitude, $longitude);
         $cbs_news_data  = $scraperService->scrapCBS($latitude, $longitude);
-        $twitter_data = $scraperService->twitter($latitude, $longitude);
+        //$twitter_data = $scraperService->twitter($latitude, $longitude);
 
-        $scraped_data = array_merge($kyiv_inde_data, $ukrinform_data, $cbs_news_data, $twitter_data);
+        $scraped_data = array_merge($kyiv_inde_data, $ukrinform_data, $cbs_news_data);
 
         return response()->json($scraped_data);
     }
