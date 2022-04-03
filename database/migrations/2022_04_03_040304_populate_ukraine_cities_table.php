@@ -23,7 +23,7 @@ return new class extends Migration
                 'city_name'  => $ukraine_city['city'],
                 'latitude'   => $ukraine_city['lat'],
                 'longitude'  => $ukraine_city['lng'],
-                'population' => $ukraine_city['population'],
+                'population' => 0,//$ukraine_city['population'],
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]);

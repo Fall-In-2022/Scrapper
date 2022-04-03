@@ -29,7 +29,10 @@ Route::get('/ukraineWebScraper', [UkraineWebScraperController::class, 'index']);
 Route::group(['prefix' => 'twitter'], function () {
 
     Route::get('/getTrends', [TwitterController::class, 'trends']);
-    Route::get('/getTweets', [TwitterController::class, 'getTweetsByTrends']);
+    Route::post('/getTweets', [TwitterController::class, 'getTweetsByTrends']);
+    Route::post('/geoDecode', [TwitterController::class, 'geoDecoder']);
+    Route::post('/tweetsByCity', [TwitterController::class, 'getTweetsByCities']);
+    Route::post('/tweetsByGeo', [TwitterController::class, 'getTweetsByGeo']);
 
 });
 
