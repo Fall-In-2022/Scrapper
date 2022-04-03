@@ -35,4 +35,26 @@ class UkraineWebScraperController extends Controller
 
         return response()->json($scraped_data);
     }
+
+    public function twitter(Request $request, ScraperService $scraperService)
+    {
+        $rules = [
+            'lat'  => 'required',
+            'long' => 'required',
+        ];
+
+        $validator = Validator::make($request->all(), $rules);
+        if ($validator->fails()) {
+            return response()->json([
+                "error" => $validator->errors()->all()
+            ]);
+        }
+
+        $latitude  = $request->input('lat');
+        $longitude = $request->input('long');
+
+        return $scraperService->twitter($latitude, $longitude);
+    }
+
+
 }

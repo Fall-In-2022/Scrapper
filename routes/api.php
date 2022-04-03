@@ -25,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('ukraineCities', UkraineCityController::class);
 
 Route::get('/ukraineWebScraper', [UkraineWebScraperController::class, 'index']);
+Route::get('/ukraineWebScraper/tweets', [UkraineWebScraperController::class, 'twitter']);
 
 //TWITTER APIS
 Route::group(['prefix' => 'twitter'], function () {
