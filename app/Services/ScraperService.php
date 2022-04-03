@@ -8,7 +8,6 @@ use App\Models\UkraineCity;
 use Illuminate\Support\Str;
 use App\Helpers\LocationHelper;
 use Atymic\Twitter\Facade\Twitter;
-use Illuminate\Support\Facades\Cache;
 
 class ScraperService
 {
@@ -185,22 +184,9 @@ class ScraperService
 
         foreach($cities as $city) {
 
-            $cityCacheKey = $city->city_name;
-
-            if( Cache::store('redis')->get("tweets:$cityCacheKey") != NULL ) {
-
-                $responseTwitter = json_decode(Cache::get("tweets:$cityCacheKey"));
-
-
-            } else {
-
-                $responseTwitter = $twitter->getSearch([
-                    "q"=> $city->city_name
-                ]);
-
-                Cache::store('redis')->put("tweets:$cityCacheKey", json_encode($responseTwitter), 900);
-
-            }
+            $responseTwitter = $twitter->getSearch([
+                "q"=> $city->city_name
+            ]);
 
             $data = [
                 "city_info" => $city,
