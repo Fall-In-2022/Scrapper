@@ -30,6 +30,7 @@ How to run this repo locally:
    - Open `docker-compose.yml`, update to `   - "${NGINX_HOST_HTTP_PORT}:8084"`
    - Open `../nginx/sites/default.conf` delete every code and paste the code from `laravel.conf.example` file.
    - In `default.conf` update all 80 port to 8084, make sure `root /var/www/public;` is set, and `server_name localhost;`.
+   - Additionaly, set the location to point to the right file `try_files $uri /public/index.php$is_args$args;`
    - Create new `.env` file in the root directory that's copied from `.env.example`.
    - In the environment file, point `APP_CODE_PATH_HOST=../Scrapper/`, `APP_CODE_PATH_CONTAINER=/var/www/public`, for Windows machine, `COMPOSE_PATH_SEPARATOR=;`, and lastly `PHP_VERSION=8.0`.
 3. Open Scrapper repo, and add a `.env` file as well with content copied from `.env.example` file.
