@@ -19,13 +19,13 @@ class LocationHelper
      */
     public static function getNearestCity(float $latitude, float $longitude) {
 
-        $sql = "SELECT *,
+        $sql = "SELECT city_name, latitude, longitude,
         (DEGREES(ACOS(SIN(RADIANS($latitude)) * SIN(RADIANS(latitude)) +
-        COS(RADIANS($latitude)) * COS(RADIANS(latitude)) * COS(RADIANS((($longitude) - (longitude)))))) * 69 ) as MI FROM ukraine_cities
+        COS(RADIANS($latitude)) * COS(RADIANS(latitude)) * COS(RADIANS((($longitude) - (longitude)))))) * 69 ) as miles_away FROM ukraine_cities
         WHERE  (DEGREES(ACOS(SIN(RADIANS($latitude)) * SIN(RADIANS(latitude)) +
-        COS(RADIANS($latitude)) * COS(RADIANS(latitude)) * COS(RADIANS((($longitude) - (longitude)))))) * 69 ) <= 20 ORDER BY MI ASC";
+        COS(RADIANS($latitude)) * COS(RADIANS(latitude)) * COS(RADIANS((($longitude) - (longitude)))))) * 69 ) <= 20 ORDER BY miles_away ASC";
 
-        return DB::select( DB::raw($sql));
+        return DB::select(DB::raw($sql));
 
     }
 }

@@ -6,6 +6,7 @@ use Goutte\Client;
 use Symfony\Component\HttpClient\HttpClient;
 use App\Models\UkraineCity;
 use Illuminate\Support\Str;
+use App\Helpers\LocationHelper;
 
 class ScraperService
 {
@@ -33,15 +34,12 @@ class ScraperService
 
         // determin location based on title
         $scraped_data   = [];
-        $ukraine_cities = UkraineCity::all()
-            ->map
-            ->only('city_name', 'latitude', 'longitude')
-            ->toArray();
+        $ukraine_cities = LocationHelper::getNearestCity($latitude, $longitude);
         foreach ($titles as $key => $title) {
             $has_location = false;
-            $city_key = 0;
+            $city_key     = null;
             foreach ($ukraine_cities as $index => $city) {
-                $contains_ukraine_city = Str::contains($title, $city['city_name']);
+                $contains_ukraine_city = Str::contains($title, $city->city_name);
 
                 if ($contains_ukraine_city) {
                     $has_location = true;
@@ -49,15 +47,15 @@ class ScraperService
                 }
             }
 
-            if ($has_location && $city_key) {
+            if ($has_location && !is_null($city_key)) {
                 array_push($scraped_data, [
                     'title'        => $title,
                     'link'         => $links[$key],
                     'time'         => $time[$key],
                     'image'        => $images[$key],
                     'has_location' => true,
-                    'latitude'     => $ukraine_cities[$city_key]['latitude'],
-                    'longitude'    => $ukraine_cities[$city_key]['longitude'],
+                    'latitude'     => $ukraine_cities[$city_key]->latitude,
+                    'longitude'    => $ukraine_cities[$city_key]->longitude,
                 ]);
                 continue;
             }
@@ -94,15 +92,12 @@ class ScraperService
 
         // determin location based on title
         $scraped_data   = [];
-        $ukraine_cities = UkraineCity::all()
-            ->map
-            ->only('city_name', 'latitude', 'longitude')
-            ->toArray();
+        $ukraine_cities = LocationHelper::getNearestCity($latitude, $longitude);
         foreach ($titles as $key => $title) {
             $has_location = false;
-            $city_key = 0;
+            $city_key     = null;
             foreach ($ukraine_cities as $index => $city) {
-                $contains_ukraine_city = Str::contains($title, $city['city_name']);
+                $contains_ukraine_city = Str::contains($title, $city->city_name);
 
                 if ($contains_ukraine_city) {
                     $has_location = true;
@@ -110,33 +105,23 @@ class ScraperService
                 }
             }
 
-            if ($has_location && $city_key) {
+            if ($has_location && !is_null($city_key)) {
                 array_push($scraped_data, [
                     'title'        => $title,
                     'link'         => $links[$key],
                     'time'         => $time[$key],
                     'image'        => $images[$key],
                     'has_location' => true,
-                    'latitude'     => $ukraine_cities[$city_key]['latitude'],
-                    'longitude'    => $ukraine_cities[$city_key]['longitude'],
+                    'latitude'     => $ukraine_cities[$city_key]->latitude,
+                    'longitude'    => $ukraine_cities[$city_key]->longitude,
                 ]);
                 continue;
             }
-
-            // DO NOT include articles that does not have a coordinate
-            /*array_push($scraped_data, [
-                'title'        => $title,
-                'link'         => $links[$key],
-                'time'         => $time[$key],
-                'image'        => $images[$key],
-                'has_location' => false,
-                'latitude'     => 0,
-                'longitude'    => 0,
-            ]);*/
         }
 
         return $scraped_data;
     }
+
     public function scrapCBS($latitude, $longitude)
     {
         $client  = new Client(HttpClient::create(['timeout' => 60]));
@@ -157,15 +142,12 @@ class ScraperService
 
         // determin location based on title
         $scraped_data   = [];
-        $ukraine_cities = UkraineCity::all()
-            ->map
-            ->only('city_name', 'latitude', 'longitude')
-            ->toArray();
+        $ukraine_cities = LocationHelper::getNearestCity($latitude, $longitude);
         foreach ($titles as $key => $title) {
             $has_location = false;
-            $city_key = 0;
+            $city_key     = null;
             foreach ($ukraine_cities as $index => $city) {
-                $contains_ukraine_city = Str::contains($title, $city['city_name']);
+                $contains_ukraine_city = Str::contains($title, $city->city_name);
 
                 if ($contains_ukraine_city) {
                     $has_location = true;
@@ -173,14 +155,14 @@ class ScraperService
                 }
             }
 
-            if ($has_location && $city_key) {
+            if ($has_location && !is_null($city_key)) {
                 array_push($scraped_data, [
                     'title'        => $title,
                     'link'         => $links[$key],
                     'image'        => $images[$key],
                     'has_location' => true,
-                    'latitude'     => $ukraine_cities[$city_key]['latitude'],
-                    'longitude'    => $ukraine_cities[$city_key]['longitude'],
+                    'latitude'     => $ukraine_cities[$city_key]->latitude,
+                    'longitude'    => $ukraine_cities[$city_key]->longitude,
                 ]);
                 continue;
             }
