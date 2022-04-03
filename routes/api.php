@@ -3,6 +3,7 @@
 use App\Http\Controllers\TwitterController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UkraineCityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,6 +20,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+Route::apiResource('ukraineCities', UkraineCityController::class);
 
 //TWITTER APIS
 Route::group(['prefix' => 'twitter'], function () {

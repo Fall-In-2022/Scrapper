@@ -40,3 +40,12 @@ How to run this repo locally:
 7. In the PowerShell, `docker exec -it {container_id} bash`, `cd public`, and issue `composer install`.
 8. Open this URL in the browser and it should be working: [http://localhost:8084/public/](http://localhost:8084/public/).
 
+Set up the database locally:
+
+1. In the Scrapper repo, open the `.env` file
+2. Set the following: `DB_HOST=mysql`, `DB_DATABASE=ukraine_web_scrapper`, and finally `DB_PASSWORD=root`.
+3. Go into the workspace container and issue the following commands:
+   - `cd public`
+   - `php artisan config:clear`
+   - `php artisan migrate:install`
+4. To see the database connect to the docker volume via a program like MySQL Workbench.
